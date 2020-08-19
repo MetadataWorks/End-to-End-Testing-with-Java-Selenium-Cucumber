@@ -1,3 +1,9 @@
+target
+build
+dist
+.cucumber
+testResults.txt
+
 # Compiled class file
 *.class
 
