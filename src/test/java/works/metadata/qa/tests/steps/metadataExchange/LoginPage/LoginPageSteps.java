@@ -37,6 +37,11 @@ public class LoginPageSteps {
         Assert.assertEquals("Log into your account", loginPageHeader);
     }
 
+    @When("I log into the application")
+    public void i_log_into_the_application() {
+        LoginPage.login(webDriver, "supervisor@metadataworks.co.uk", "password");
+    }
+
     @When("I enter valid username")
     public void i_enter_valid_username() {
         LoginPage.enterUsername(webDriver, BaseSteps.properties.getProperty("username"));
@@ -77,6 +82,16 @@ public class LoginPageSteps {
     @Then("Unauthorised Access error message is displayed")
     public void unauthorised_access_error_message_is_displayed() {
         Assert.assertTrue(LoginPage.unauthorisedAccessErrorMessageIsDisplayed(webDriver));
+    }
+
+    @Then("Email must be specified error message is displayed")
+    public void email_must_be_specified_error_message_is_displayed() {
+        Assert.assertTrue(LoginPage.emailMustBeSpecifiedErrorMessageIsDisplayed(webDriver));
+    }
+
+    @Then("Password must be specified message is displayed")
+    public void password_must_be_specified_message_is_displayed() {
+        Assert.assertTrue(LoginPage.passwordMustBeSpecifiedErrorMessageIsDisplayed(webDriver));
     }
 
     @After

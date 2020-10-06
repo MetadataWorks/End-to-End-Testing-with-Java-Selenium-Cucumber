@@ -13,6 +13,8 @@ public class LoginPage {
     private static final By password = By.name("password");
     private static final By loginButton = By.xpath("//button[text()='Log In']");
     private static final By unauthorisedAccessErrorMessage = By.xpath("//span[text()='Unauthorised access.']");
+    private static final By emailMustBeSpecifiedErrorMessage = By.xpath("//span[text()='Email must be specified']");
+    private static final By passwordMustBeSpecifiedErrorMessage = By.xpath("//span[text()='Password must be specified']");
     private static final By forgotPasswordLink = By.linkText("Forgot Password?");
 
     //Getters:
@@ -45,6 +47,12 @@ public class LoginPage {
         return getMdxLogo(webDriver).isDisplayed();
     }
 
+    public static void login(WebDriver webDriver, String username, String password) {
+        getUsername(webDriver).sendKeys(username);
+        getPassword(webDriver).sendKeys(password);
+        getLoginButton(webDriver).click();
+    }
+
     public static void enterUsername(WebDriver webDriver, String username) {
         getUsername(webDriver).sendKeys(username);
     }
@@ -64,6 +72,14 @@ public class LoginPage {
 
     public static Boolean unauthorisedAccessErrorMessageIsDisplayed (WebDriver webDriver) {
         return webDriver.findElement(unauthorisedAccessErrorMessage).isDisplayed();
+    }
+
+    public static Boolean emailMustBeSpecifiedErrorMessageIsDisplayed (WebDriver webDriver) {
+        return webDriver.findElement(emailMustBeSpecifiedErrorMessage).isDisplayed();
+    }
+
+    public static Boolean passwordMustBeSpecifiedErrorMessageIsDisplayed (WebDriver webDriver) {
+        return webDriver.findElement(passwordMustBeSpecifiedErrorMessage).isDisplayed();
     }
 
     public static void clickOnForgotPasswordLink(WebDriver webDriver){
